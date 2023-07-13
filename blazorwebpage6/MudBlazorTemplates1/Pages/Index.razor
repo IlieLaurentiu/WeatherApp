@@ -1,0 +1,293 @@
+﻿@page "/"
+@inject HttpClient httpClient
+@inject SomeStateService someStateService
+
+<PageTitle>Index</PageTitle>
+<MudMainContent Class="p-0 m-0">
+<div class="d-flex">
+            <MudCard Class="ml-n16 mr-8">
+                <MudPaper Class="pr-16 pb-1 mud-theme-primary"></MudPaper>
+                <MudCardHeader>
+                    <CardHeaderContent>
+                    <MudText Typo="Typo.h6" Color="Color.Primary"> @formattedDateTime </MudText>
+                    @if (weathercodes.ContainsKey(currentTemp.daily.weathercode[0])) 
+                    {
+                        <MudText Typo="Typo.h6">@weathercodes[currentTemp.daily.weathercode[0]]</MudText>
+                    }
+                    </CardHeaderContent>
+                </MudCardHeader>
+                <MudCardContent>
+                <MudText>Max @currentTemp.daily.apparent_temperature_max[0]@tempUnit</MudText>
+                <MudText Class="mb-4">Min @currentTemp.daily.apparent_temperature_min[0]@tempUnit</MudText>
+
+                    <MudText Class="mb-4">Solar UV Index max @currentTemp.daily.uv_index_max[0] </MudText>
+
+                    <MudText>Precipitation probability @currentTemp.daily.precipitation_probability_max[0]% </MudText>
+                </MudCardContent>
+            </MudCard>
+        <MudCard Class="mr-8">
+            <MudPaper Class="pr-16 pb-1 mud-theme-secondary"></MudPaper>
+            <MudCardHeader>
+                <CardHeaderContent>
+                    <MudText Typo="Typo.h6" Color="Color.Secondary">@tmrwFormatted</MudText>
+                    @if (weathercodes.ContainsKey(currentTemp.daily.weathercode[1]))
+                    {
+                        <MudText Typo="Typo.h6">@weathercodes[currentTemp.daily.weathercode[1]]</MudText>
+                    }
+                </CardHeaderContent>
+            </MudCardHeader>
+            <MudCardContent>
+                <MudText>Max @currentTemp.daily.apparent_temperature_max[1]@tempUnit</MudText>
+                <MudText Class="mb-4">Min @currentTemp.daily.apparent_temperature_min[1]@tempUnit</MudText>
+
+                <MudText Class="mb-4">Solar UV Index max @currentTemp.daily.uv_index_max[1] </MudText>
+
+                <MudText>Precipitation probability @currentTemp.daily.precipitation_probability_max[1]% </MudText>
+            </MudCardContent>
+        </MudCard>
+
+
+        <MudCard Class="mr-8">
+            <MudPaper Class="pr-16 pb-1 mud-theme-primary"></MudPaper>
+            <MudCardHeader>
+
+                <CardHeaderContent>
+                    <MudText Typo="Typo.h6" Color="Color.Primary">@tmrwFormatted2</MudText>
+                    @if (weathercodes.ContainsKey(currentTemp.daily.weathercode[2]))
+                    {
+                        <MudText Typo="Typo.h6">@weathercodes[currentTemp.daily.weathercode[2]]</MudText>
+                    }
+                </CardHeaderContent>
+            </MudCardHeader>
+            <MudCardContent>
+                <MudText>Max @currentTemp.daily.apparent_temperature_max[2]@tempUnit</MudText>
+                <MudText Class="mb-4">Min @currentTemp.daily.apparent_temperature_min[2]@tempUnit</MudText>
+
+                <MudText Class="mb-4">Solar UV Index max @currentTemp.daily.uv_index_max[2] </MudText>
+
+                <MudText>Precipitation probability @currentTemp.daily.precipitation_probability_max[2]% </MudText>
+            </MudCardContent>
+        </MudCard>
+
+        <MudCard Class= "mr-8">
+                <MudPaper Class="pr-16 pb-1 mud-theme-secondary"></MudPaper>
+                <MudCardHeader>
+                    <div class="d-flex flex-column">
+                    <MudText Typo="Typo.h6" Color="Color.Secondary">@tmrwFormatted3</MudText>
+                    @if (weathercodes.ContainsKey(currentTemp.daily.weathercode[3]))
+                    {
+                        <MudText Typo="Typo.h6">@weathercodes[currentTemp.daily.weathercode[3]]</MudText>
+                    }
+                    </div>
+                </MudCardHeader>
+                <MudCardContent>
+                <MudText>Max @currentTemp.daily.apparent_temperature_max[3]@tempUnit</MudText>
+                <MudText Class="mb-4">Min @currentTemp.daily.apparent_temperature_min[3]@tempUnit</MudText>
+
+                    <MudText Class="mb-4">Solar UV Index max @currentTemp.daily.uv_index_max[3] </MudText>
+
+                    <MudText>Precipitation probability @currentTemp.daily.precipitation_probability_max[3]% </MudText>
+                </MudCardContent>
+            </MudCard>
+        <MudCard Class="mr-8">
+                <MudPaper Class="pr-16 pb-1 mud-theme-primary"></MudPaper>
+                <MudCardHeader>
+
+                    <CardHeaderContent>
+                        <MudText Typo="Typo.h6" Color="Color.Primary">@tmrwFormatted4</MudText>
+                    @if (weathercodes.ContainsKey(currentTemp.daily.weathercode[4]))
+                    {
+                        <MudText Typo="Typo.h6">@weathercodes[currentTemp.daily.weathercode[4]]</MudText>
+                    }
+                    </CardHeaderContent>
+                </MudCardHeader>
+                <MudCardContent>
+                <MudText>Max @currentTemp.daily.apparent_temperature_max[4]@tempUnit</MudText>
+                <MudText Class="mb-4">Min @currentTemp.daily.apparent_temperature_min[4]@tempUnit</MudText>
+
+                    <MudText Class="mb-4">Solar UV Index max @currentTemp.daily.uv_index_max[4] </MudText>
+
+                    <MudText>Precipitation probability @currentTemp.daily.precipitation_probability_max[4]% </MudText>
+                </MudCardContent>
+            </MudCard>
+   
+        <MudCard Class=" mr-8">
+                <MudPaper Class="pr-16 pb-1 mud-theme-secondary"></MudPaper>
+                <MudCardHeader>
+
+                    <CardHeaderContent>
+                        <MudText Typo="Typo.h6" Color="Color.Secondary">@tmrwFormatted5</MudText>
+                    @if (weathercodes.ContainsKey(currentTemp.daily.weathercode[5]))
+                    {
+                        <MudText Typo="Typo.h6">@weathercodes[currentTemp.daily.weathercode[5]]</MudText>
+                    }
+                    </CardHeaderContent>
+                </MudCardHeader>
+                <MudCardContent>
+                <MudText>Max @currentTemp.daily.apparent_temperature_max[5]@tempUnit</MudText>
+                    <MudText Class="mb-4">Min @currentTemp.daily.apparent_temperature_min[5]@tempUnit</MudText>
+
+                    <MudText Class="mb-4">Solar UV Index max @currentTemp.daily.uv_index_max[5] </MudText>
+
+                    <MudText>Precipitation probability @currentTemp.daily.precipitation_probability_max[5]% </MudText>
+                </MudCardContent>
+            </MudCard>
+        <MudCard Class="mr-8">
+            <MudPaper Class="pr-16 pb-1 mud-theme-primary"></MudPaper>
+            <MudCardHeader>
+
+                <CardHeaderContent>
+                    <MudText Typo="Typo.h6" Color="Color.Primary">@tmrwFormatted6</MudText>
+                    @if (weathercodes.ContainsKey(currentTemp.daily.weathercode[6]))
+                    {
+                        <MudText Typo="Typo.h6">@weathercodes[currentTemp.daily.weathercode[6]]</MudText>
+                    }
+                </CardHeaderContent>
+            </MudCardHeader>
+            <MudCardContent>
+                <MudText>Max @currentTemp.daily.apparent_temperature_max[6]@tempUnit</MudText>
+                <MudText Class="mb-4">Min @currentTemp.daily.apparent_temperature_min[6]@tempUnit</MudText>
+
+                <MudText Class="mb-4">Solar UV Index max @currentTemp.daily.uv_index_max[6] </MudText>
+
+                <MudText>Precipitation probability @currentTemp.daily.precipitation_probability_max[6]% </MudText>
+            </MudCardContent>
+        </MudCard>
+    </div>
+</MudMainContent>
+
+@code {
+    public Rootobject currentTemp;
+    DateTime currentDateTime = DateTime.Now;
+    string formattedDateTime, tmrwFormatted, tmrwFormatted2, tmrwFormatted3, tmrwFormatted4, tmrwFormatted5, tmrwFormatted6;
+    DateTime tomorrow;
+    string[] weatherSummary = new string[7];
+    string tempUnit = "°C";
+
+    Dictionary<int, string> weathercodes = new Dictionary<int, string>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        await RegisterWeatherCodes();
+        formattedDateTime = currentDateTime.ToString("dddd, dd MMMM yyyy");
+        tomorrow = currentDateTime.AddDays(1);
+        tmrwFormatted = tomorrow.ToString("dddd, dd MMMM yyyy");
+        tomorrow = currentDateTime.AddDays(2);
+        tmrwFormatted2 = tomorrow.ToString("dddd, dd MMMM yyyy");
+        tomorrow = currentDateTime.AddDays(3);
+        tmrwFormatted3 = tomorrow.ToString("dddd, dd MMMM yyyy");
+        tomorrow = currentDateTime.AddDays(4);
+        tmrwFormatted4 = tomorrow.ToString("dddd, dd MMMM yyyy");
+        tomorrow = currentDateTime.AddDays(5);
+        tmrwFormatted5 = tomorrow.ToString("dddd, dd MMMM yyyy");
+        tomorrow = currentDateTime.AddDays(6);
+        tmrwFormatted6 = tomorrow.ToString("dddd, dd MMMM yyyy");
+        if (someStateService.isFahrenheit)
+        {
+            tempUnit = "°F";
+        }
+
+        await GetWeatherData();
+    }
+
+    async Task RegisterWeatherCodes()
+    {
+        weathercodes.Add(0, "Clear Sky");
+        weathercodes.Add(1, "Mainly clear");
+        weathercodes.Add(2, "Partly Cloudy");
+        weathercodes.Add(3, "Overcast");
+        weathercodes.Add(45, "Fog");
+        weathercodes.Add(48, "Depositing Rime Fog");
+        weathercodes.Add(51, "Light Drizzle");
+        weathercodes.Add(53, "Moderate Drizzle");
+        weathercodes.Add(55, "Dense Drizzle");
+        weathercodes.Add(56, "Light Freezing Drizzle");
+        weathercodes.Add(57, "Dense Freezing Drizzle");
+        weathercodes.Add(61, "Slight Rain");
+        weathercodes.Add(63, "Moderate Rain");
+        weathercodes.Add(65, "Heavy Rain");
+        weathercodes.Add(66, "Light Freezing Rain");
+        weathercodes.Add(67, "Heavy Freezing Rain");
+        weathercodes.Add(71, "Slight Snow Fall");
+        weathercodes.Add(73, "Moderate Snow Fall");
+        weathercodes.Add(75, "Heavy Snow Fall");
+        weathercodes.Add(77, "Snow Grains");
+        weathercodes.Add(80, "Slight Rain Shower");
+        weathercodes.Add(81, "Moderate Rain Shower");
+        weathercodes.Add(82, "Violent Rain Shower");
+        weathercodes.Add(85, "Slight Snow Shower");
+        weathercodes.Add(86, "Heavy Snow Shower");
+        weathercodes.Add(95, "Thunderstorm");
+        weathercodes.Add(96, "Thunderstorm with slight hail");
+        weathercodes.Add(99, "Thunderstorm with heavy hail");
+    }
+
+    async Task GetWeatherData()
+    {
+        currentTemp = new();
+        if (someStateService.isFahrenheit)
+        {
+            var resp = await httpClient.GetFromJsonAsync<Rootobject>("https://api.open-meteo.com/v1/forecast?latitude=44.25&longitude=23.7833&temperature_unit=fahrenheit&daily=apparent_temperature_max,apparent_temperature_min,weathercode,sunrise,sunset,uv_index_max,precipitation_probability_max&current_weather=true&timezone=Europe%2FMoscow&forecast_days=7");         
+            if (resp != null)
+            {
+                currentTemp = resp;
+            }
+        }
+        else
+        {
+            var resp = await httpClient.GetFromJsonAsync<Rootobject>("https://api.open-meteo.com/v1/forecast?latitude=44.25&longitude=23.7833&temperature_unit=celsius&daily=apparent_temperature_max,apparent_temperature_min,weathercode,sunrise,sunset,uv_index_max,precipitation_probability_max&current_weather=true&timezone=Europe%2FMoscow&forecast_days=7");
+            if (resp != null)
+            {
+                currentTemp = resp;
+            }
+        }
+
+       
+    }
+
+    public class Rootobject
+    {
+        public float latitude { get; set; }
+        public float longitude { get; set; }
+        public float generationtime_ms { get; set; }
+        public int utc_offset_seconds { get; set; }
+        public string timezone { get; set; }
+        public string timezone_abbreviation { get; set; }
+        public float elevation { get; set; }
+        public Current_Weather current_weather { get; set; }
+        public Daily_Units daily_units { get; set; }
+        public Daily daily { get; set; }  
+    }
+
+    public class Current_Weather
+    {
+        public float temperature { get; set; }
+        public float windspeed { get; set; }
+        public float winddirection { get; set; }
+        public int weathercode { get; set; }
+        public int is_day { get; set; }
+        public string time { get; set; }
+    }
+
+    public class Daily_Units
+    {
+        public string time { get; set; }
+        public string weathercode { get; set; }
+        public string sunrise { get; set; }
+        public string sunset { get; set; }
+        public string uv_index_max { get; set; }
+        public string precipitation_probability_max { get; set; }
+    }
+
+    public class Daily
+    {
+        public List<string> time { get; set; }
+        public List<double> apparent_temperature_max { get; set; }
+        public List<double> apparent_temperature_min { get; set; }
+        public List<int> weathercode { get; set; }
+        public List<string> sunrise { get; set; }
+        public List<string> sunset { get; set; }
+        public List<double> uv_index_max { get; set; }
+        public List<int> precipitation_probability_max { get; set; }
+    }
+}

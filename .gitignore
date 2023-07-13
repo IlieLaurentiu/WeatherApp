@@ -5,8 +5,10 @@
 
 # User-specific files
 *.rsuser
+*.ico
 *.suo
 *.user
+*.png
 *.userosscache
 *.sln.docstates
 
