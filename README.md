@@ -1,2 +1,2 @@
 # Blazor_App
- A blazor application
+ A weather app made with Blazor
