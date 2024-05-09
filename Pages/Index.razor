@@ -4,9 +4,10 @@
 
 <PageTitle>Index</PageTitle>
 <MudMainContent Class="p-0 m-0">
-<div class="d-flex">
-            <MudCard Class="ml-n16 mr-8">
-                <MudPaper Class="pr-16 pb-1 mud-theme-primary"></MudPaper>
+    <MudContainer Class="d-flex">
+
+            <MudCard>
+                <MudPaper Class="pb-1 mud-theme-primary"></MudPaper>
                 <MudCardHeader>
                     <CardHeaderContent>
                     <MudText Typo="Typo.h6" Color="Color.Primary"> @formattedDateTime </MudText>
@@ -25,8 +26,8 @@
                     <MudText>Precipitation probability @currentTemp.daily.precipitation_probability_max[0]% </MudText>
                 </MudCardContent>
             </MudCard>
-        <MudCard Class="mr-8">
-            <MudPaper Class="pr-16 pb-1 mud-theme-secondary"></MudPaper>
+        <MudCard>
+            <MudPaper Class="pb-1 mud-theme-secondary"></MudPaper>
             <MudCardHeader>
                 <CardHeaderContent>
                     <MudText Typo="Typo.h6" Color="Color.Secondary">@tmrwFormatted</MudText>
@@ -47,8 +48,8 @@
         </MudCard>
 
 
-        <MudCard Class="mr-8">
-            <MudPaper Class="pr-16 pb-1 mud-theme-primary"></MudPaper>
+        <MudCard>
+            <MudPaper Class="pb-1 mud-theme-primary"></MudPaper>
             <MudCardHeader>
 
                 <CardHeaderContent>
@@ -69,8 +70,8 @@
             </MudCardContent>
         </MudCard>
 
-        <MudCard Class= "mr-8">
-                <MudPaper Class="pr-16 pb-1 mud-theme-secondary"></MudPaper>
+        <MudCard>
+                <MudPaper Class="pb-1 mud-theme-secondary"></MudPaper>
                 <MudCardHeader>
                     <div class="d-flex flex-column">
                     <MudText Typo="Typo.h6" Color="Color.Secondary">@tmrwFormatted3</MudText>
@@ -89,8 +90,8 @@
                     <MudText>Precipitation probability @currentTemp.daily.precipitation_probability_max[3]% </MudText>
                 </MudCardContent>
             </MudCard>
-        <MudCard Class="mr-8">
-                <MudPaper Class="pr-16 pb-1 mud-theme-primary"></MudPaper>
+        <MudCard>
+                <MudPaper Class="pb-1 mud-theme-primary"></MudPaper>
                 <MudCardHeader>
 
                     <CardHeaderContent>
@@ -111,8 +112,8 @@
                 </MudCardContent>
             </MudCard>
    
-        <MudCard Class=" mr-8">
-                <MudPaper Class="pr-16 pb-1 mud-theme-secondary"></MudPaper>
+        <MudCard>
+                <MudPaper Class="pb-1 mud-theme-secondary"></MudPaper>
                 <MudCardHeader>
 
                     <CardHeaderContent>
@@ -132,8 +133,8 @@
                     <MudText>Precipitation probability @currentTemp.daily.precipitation_probability_max[5]% </MudText>
                 </MudCardContent>
             </MudCard>
-        <MudCard Class="mr-8">
-            <MudPaper Class="pr-16 pb-1 mud-theme-primary"></MudPaper>
+        <MudCard>
+            <MudPaper Class="pb-1 mud-theme-primary"></MudPaper>
             <MudCardHeader>
 
                 <CardHeaderContent>
@@ -153,7 +154,7 @@
                 <MudText>Precipitation probability @currentTemp.daily.precipitation_probability_max[6]% </MudText>
             </MudCardContent>
         </MudCard>
-    </div>
+    </MudContainer>
 </MudMainContent>
 
 @code {
